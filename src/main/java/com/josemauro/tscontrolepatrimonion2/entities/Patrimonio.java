@@ -1,10 +1,7 @@
 package com.josemauro.tscontrolepatrimonion2.entities;
 
 import java.sql.Date;
-import java.time.LocalDate;
-
 import com.josemauro.tscontrolepatrimonion2.enums.StatusPatrimonioEnum;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Patrimonio {
@@ -23,13 +19,13 @@ public class Patrimonio {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false )
     private String qrcode;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String tag;
 
-    @Column
+    @Column(nullable = false)
     private String descricao;
 
     @ManyToOne
@@ -38,12 +34,12 @@ public class Patrimonio {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private StatusPatrimonioEnum status = StatusPatrimonioEnum.ATIVO;
+    private StatusPatrimonioEnum status;
 
-    @Column
-    private Date dataaquisicao;
+    @Column(nullable = false)
+    private Date dataAquisicao;
 
-    @Column
+    @Column(nullable = false)
     private double custo;
 
     @ManyToOne
@@ -58,7 +54,7 @@ public class Patrimonio {
     }
 
     public Patrimonio(Long id, String qrcode, String tag, String descricao, Categoria categoria,
-            StatusPatrimonioEnum status, Date dataaquisicao, double custo, Localizacao localizacao,
+            StatusPatrimonioEnum status, Date dataAquisicao, double custo, Localizacao localizacao,
             Pessoa pessoaResponsavel) {
         this.id = id;
         this.qrcode = qrcode;
@@ -66,7 +62,7 @@ public class Patrimonio {
         this.descricao = descricao;
         this.categoria = categoria;
         this.status = status;
-        this.dataaquisicao = dataaquisicao;
+        this.dataAquisicao = dataAquisicao;
         this.custo = custo;
         this.localizacao = localizacao;
         this.pessoaResponsavel = pessoaResponsavel;
@@ -120,12 +116,12 @@ public class Patrimonio {
         this.status = status;
     }
 
-    public Date getDataaquisicao() {
-        return dataaquisicao;
+    public Date getDataAquisicao() {
+        return dataAquisicao;
     }
 
-    public void setDataaquisicao(Date dataaquisicao) {
-        this.dataaquisicao = dataaquisicao;
+    public void setDataAquisicao(Date dataAquisicao) {
+        this.dataAquisicao = dataAquisicao;
     }
 
     public double getCusto() {
@@ -151,9 +147,4 @@ public class Patrimonio {
     public void setPessoaResponsavel(Pessoa pessoaResponsavel) {
         this.pessoaResponsavel = pessoaResponsavel;
     }
-
-    
-
-    
-    
 }

@@ -13,22 +13,22 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
-    @Column
+    @Column(nullable = false)
     private String cpf;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String departamento;
 
-    @Column
+    @Column(nullable = false)
     private String cargo;
 
-    @Column
+    @Column(nullable = false)
     private boolean ativo;
 
     public Pessoa() {
@@ -98,9 +98,5 @@ public class Pessoa {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
-    }
-
-    
-    
-    
+    }  
 }

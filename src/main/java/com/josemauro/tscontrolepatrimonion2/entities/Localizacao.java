@@ -13,7 +13,7 @@ public class Localizacao {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
     @Column
