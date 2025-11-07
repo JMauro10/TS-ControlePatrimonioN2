@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Movimentacao {
@@ -15,32 +17,129 @@ public class Movimentacao {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    // informar o relacionamento @
+    // Um Patrimonio pode ter muitas Movimentacoes.
+    @ManyToOne
+    @JoinColumn(name = "patrimonio_id")
     private Patrimonio patrimonio;
 
     @Column(nullable = false)
     private Date dataMovimentacao;
 
-    // informar o relacionamento @
+    // Uma Localizacao pode ser origem de muitas Movimentacoes.
+    @ManyToOne
+    @JoinColumn(name = "de_localizacao_id")
     private Localizacao deLocalizacao;
 
-    // informar o relacionamento @
+    // Uma Localizacao pode ser destino de muitas Movimentacoes.
+    @ManyToOne
+    @JoinColumn(name = "para_localizacao_id")
     private Localizacao paraLocalizacao;
 
-    // informar o relacionamento @
+    // Uma Pessoa pode ser responsavel de origem muitas vezes.
+    @ManyToOne
+    @JoinColumn(name = "de_responsavel_id")
     private Pessoa deResponsavel;
 
-    // informar o relacionamento @
+    // Uma Pessoa pode ser responsavel de destino muitas vezes.
+    @ManyToOne
+    @JoinColumn(name = "para_responsavel_id")
     private Pessoa paraResponsavel;
 
     @Column(nullable = false)
     private String nota;
 
-    // informar o relacionamento @
-    // é o mesmo pessoa responsavel?
+    // Uma Pessoa pode criar muitas Movimentacoes.
+    @ManyToOne
+    @JoinColumn(name = "criador_movimento_id")
     private Pessoa criadorMovimento;
 
     public Movimentacao() {
+    }
+
+    public Movimentacao(Long id, Patrimonio patrimonio, Date dataMovimentacao, Localizacao deLocalizacao,
+            Localizacao paraLocalizacao, Pessoa deResponsavel, Pessoa paraResponsavel, String nota,
+            Pessoa criadorMovimento) {
+        this.id = id;
+        this.patrimonio = patrimonio;
+        this.dataMovimentacao = dataMovimentacao;
+        this.deLocalizacao = deLocalizacao;
+        this.paraLocalizacao = paraLocalizacao;
+        this.deResponsavel = deResponsavel;
+        this.paraResponsavel = paraResponsavel;
+        this.nota = nota;
+        this.criadorMovimento = criadorMovimento;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Patrimonio getPatrimonio() {
+        return patrimonio;
+    }
+
+    public void setPatrimonio(Patrimonio patrimonio) {
+        this.patrimonio = patrimonio;
+    }
+
+    public Date getDataMovimentacao() {
+        return dataMovimentacao;
+    }
+
+    public void setDataMovimentacao(Date dataMovimentacao) {
+        this.dataMovimentacao = dataMovimentacao;
+    }
+
+    public Localizacao getDeLocalizacao() {
+        return deLocalizacao;
+    }
+
+    public void setDeLocalizacao(Localizacao deLocalizacao) {
+        this.deLocalizacao = deLocalizacao;
+    }
+
+    public Localizacao getParaLocalizacao() {
+        return paraLocalizacao;
+    }
+
+    public void setParaLocalizacao(Localizacao paraLocalizacao) {
+        this.paraLocalizacao = paraLocalizacao;
+    }
+
+    public Pessoa getDeResponsavel() {
+        return deResponsavel;
+    }
+
+    public void setDeResponsavel(Pessoa deResponsavel) {
+        this.deResponsavel = deResponsavel;
+    }
+
+    public Pessoa getParaResponsavel() {
+        return paraResponsavel;
+    }
+
+    public void setParaResponsavel(Pessoa paraResponsavel) {
+        this.paraResponsavel = paraResponsavel;
+    }
+
+    public String getNota() {
+        return nota;
+    }
+
+    public void setNota(String nota) {
+        this.nota = nota;
+    }
+
+    public Pessoa getCriadorMovimento() {
+        return criadorMovimento;
+    }
+
+    public void setCriadorMovimento(Pessoa criadorMovimento) {
+        this.criadorMovimento = criadorMovimento;
     }
     
 }
