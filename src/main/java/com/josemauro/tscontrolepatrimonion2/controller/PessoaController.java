@@ -31,8 +31,8 @@ public class PessoaController {
         return pessoaRepository.save(pessoa);
     }
 
-    @DeleteMapping("/{id}")
-    public void deletarPessoaById(@PathVariable Long id){
-        pessoaRepository.deleteById(id);
-    }
+        @DeleteMapping("/{id}")
+        public void deletarPessoaById(@PathVariable Long id){
+            pessoaRepository.deleteById(id);
+        }
 }
