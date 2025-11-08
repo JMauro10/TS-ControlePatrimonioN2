@@ -25,11 +25,10 @@ public class MovimentacaoController {
     private PatrimonioRepository patrimonioRepository;
 
     @Autowired
-    private LocalizacaoRepository localizacaoRepository;
-
-    @Autowired
     private PessoaRepository pessoaRepository;
 
+    @Autowired
+    private LocalizacaoRepository localizacaoRepository;
 
 
     @GetMapping
@@ -39,7 +38,7 @@ public class MovimentacaoController {
 
     @PostMapping
     public ResponseEntity<Movimentacao> criar(@RequestBody Movimentacao movimentacao) {
-        // Carregue cada entidade relacionada antes de salvar
+        // Carregando cada entidade relacionada antes de salvar para que os dados nao retorne null
         if (movimentacao.getPatrimonio() != null && movimentacao.getPatrimonio().getId() != null) {
             movimentacao.setPatrimonio(
                     patrimonioRepository.findById(movimentacao.getPatrimonio().getId()).orElse(null)
