@@ -5,4 +5,4 @@ import org.springframework.stereotype.Repository;
 import com.josemauro.tscontrolepatrimonion2.entities.Localizacao;
 
 @Repository
-public interface LocalizaoRepository extends JpaRepository<Localizacao, Long>{}
+public interface LocalizacaoRepository extends JpaRepository<Localizacao, Long>{}
