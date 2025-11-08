@@ -2,15 +2,7 @@ package com.josemauro.tscontrolepatrimonion2.entities;
 
 import java.sql.Date;
 import com.josemauro.tscontrolepatrimonion2.enums.StatusPatrimonioEnum;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Patrimonio {
@@ -28,7 +20,7 @@ public class Patrimonio {
     @Column(nullable = false)
     private String descricao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
@@ -42,11 +34,11 @@ public class Patrimonio {
     @Column(nullable = false)
     private double custo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "localizacao_id")
     private Localizacao localizacao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pessoaResponsavel_id")
     private Pessoa pessoaResponsavel;
 

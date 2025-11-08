@@ -4,15 +4,7 @@ import java.sql.Date;
 
 import com.josemauro.tscontrolepatrimonion2.enums.StatusInventarioEnum;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Inventario {
@@ -22,7 +14,7 @@ public class Inventario {
     private Long id;
 
     // Um Patrimonio pode estar em muitos Inventarios (ex: um por ano).
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patrimonio_id")
     private Patrimonio patrimonio;
 
@@ -34,12 +26,12 @@ public class Inventario {
     private StatusInventarioEnum status;
 
     // Uma Localizacao pode aparecer em muitos registros de Inventario.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "localizacao_fisica_id")
     private Localizacao localizacaoFisica; // localizacao onde foi achado
 
     // Uma Pessoa (auditor) pode realizar muitos Inventarios.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "auditor_id")
     private Pessoa auditor;
 

@@ -2,13 +2,7 @@ package com.josemauro.tscontrolepatrimonion2.entities;
 
 import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Movimentacao {
@@ -18,7 +12,7 @@ public class Movimentacao {
     private Long id;
 
     // Um Patrimonio pode ter muitas Movimentacoes.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patrimonio_id")
     private Patrimonio patrimonio;
 
@@ -26,22 +20,22 @@ public class Movimentacao {
     private Date dataMovimentacao;
 
     // Uma Localizacao pode ser origem de muitas Movimentacoes.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "de_localizacao_id")
     private Localizacao deLocalizacao;
 
     // Uma Localizacao pode ser destino de muitas Movimentacoes.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "para_localizacao_id")
     private Localizacao paraLocalizacao;
 
     // Uma Pessoa pode ser responsavel de origem muitas vezes.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "de_responsavel_id")
     private Pessoa deResponsavel;
 
     // Uma Pessoa pode ser responsavel de destino muitas vezes.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "para_responsavel_id")
     private Pessoa paraResponsavel;
 
@@ -49,7 +43,7 @@ public class Movimentacao {
     private String nota;
 
     // Uma Pessoa pode criar muitas Movimentacoes.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "criador_movimento_id")
     private Pessoa criadorMovimento;
 
