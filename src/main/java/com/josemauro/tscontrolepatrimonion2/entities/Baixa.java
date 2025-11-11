@@ -1,7 +1,5 @@
 package com.josemauro.tscontrolepatrimonion2.entities;
 
-import java.sql.Date;
-
 import com.josemauro.tscontrolepatrimonion2.enums.MotivoBaixaEnum;
 import com.josemauro.tscontrolepatrimonion2.enums.StatusInventarioEnum;
 
@@ -21,7 +19,7 @@ public class Baixa {
     private Patrimonio patrimonio;
 
     @Column(nullable = false)
-    private Date dataBaixa;
+    private String dataBaixa;
 
     @Enumerated(EnumType.STRING)
     @Column
@@ -42,7 +40,7 @@ public class Baixa {
     public Baixa() {
     }
 
-    public Baixa(Long id, Patrimonio patrimonio, Date dataBaixa, MotivoBaixaEnum motivo, StatusInventarioEnum status,
+    public Baixa(Long id, Patrimonio patrimonio, String dataBaixa, MotivoBaixaEnum motivo, StatusInventarioEnum status,
             Pessoa autorizadoPor, String nota) {
         this.id = id;
         this.patrimonio = patrimonio;
@@ -69,11 +67,11 @@ public class Baixa {
         this.patrimonio = patrimonio;
     }
 
-    public Date getDataBaixa() {
+    public String getDataBaixa() {
         return dataBaixa;
     }
 
-    public void setDataBaixa(Date dataBaixa) {
+    public void setDataBaixa(String dataBaixa) {
         this.dataBaixa = dataBaixa;
     }
 
