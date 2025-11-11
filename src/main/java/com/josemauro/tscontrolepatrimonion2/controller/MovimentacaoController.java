@@ -1,6 +1,5 @@
 package com.josemauro.tscontrolepatrimonion2.controller;
 
-import com.josemauro.tscontrolepatrimonion2.entities.Categoria;
 import com.josemauro.tscontrolepatrimonion2.repository.LocalizacaoRepository;
 import com.josemauro.tscontrolepatrimonion2.repository.PatrimonioRepository;
 import com.josemauro.tscontrolepatrimonion2.repository.PessoaRepository;

@@ -1,7 +1,6 @@
 package com.josemauro.tscontrolepatrimonion2.controller;
 
 import com.josemauro.tscontrolepatrimonion2.entities.Localizacao;
-import com.josemauro.tscontrolepatrimonion2.entities.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
