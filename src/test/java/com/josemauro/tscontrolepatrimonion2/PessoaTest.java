@@ -58,10 +58,10 @@ public class PessoaTest {
         Thread.sleep(2000);
 
         WebElement nome = driver.findElement(By.name("nome"));
-        WebElement cpf = driver.findElement(By.name("nome"));
-        WebElement email = driver.findElement(By.name("nome"));
-        WebElement departamento = driver.findElement(By.name("nome"));
-        WebElement cargo = driver.findElement(By.name("email"));
+        WebElement cpf = driver.findElement(By.name("cpf"));
+        WebElement email = driver.findElement(By.name("email"));
+        WebElement departamento = driver.findElement(By.name("departamento"));
+        WebElement cargo = driver.findElement(By.name("cargo"));
 
         nome.sendKeys("Teste Selenium");
         cpf.sendKeys("123.456.789-00");
@@ -71,7 +71,7 @@ public class PessoaTest {
 
 		System.out.println("Dados da pessoa preenchidos.");
 
-		WebElement submitButton = driver.findElement(By.cssSelector("form#personForm button[type='submit']"));
+		WebElement submitButton = driver.findElement(By.id("btnSalvarPessoa"));
         submitButton.click();
 
 		Thread.sleep(2000);
