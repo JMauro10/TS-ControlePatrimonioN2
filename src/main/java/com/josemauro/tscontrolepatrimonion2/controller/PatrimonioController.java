@@ -1,6 +1,5 @@
 package com.josemauro.tscontrolepatrimonion2.controller;
 
-import com.josemauro.tscontrolepatrimonion2.entities.Movimentacao;
 import com.josemauro.tscontrolepatrimonion2.entities.Patrimonio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

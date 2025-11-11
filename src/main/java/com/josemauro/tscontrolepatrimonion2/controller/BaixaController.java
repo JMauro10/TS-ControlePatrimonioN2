@@ -1,6 +1,5 @@
 package com.josemauro.tscontrolepatrimonion2.controller;
 
-import com.josemauro.tscontrolepatrimonion2.entities.Patrimonio;
 import com.josemauro.tscontrolepatrimonion2.repository.PatrimonioRepository;
 import com.josemauro.tscontrolepatrimonion2.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
